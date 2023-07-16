@@ -10,19 +10,21 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.rememberNavController
+import edu.uchicago.gerber.androidretro.presentation.navigation.Navigation
 import edu.uchicago.gerber.androidretro.ui.theme.AndroidRetroTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            AndroidRetroTheme {
-                // A surface container using the 'background' color from the theme
+            AndroidRetroTheme() {
+                val navController = rememberNavController()
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-
+                    Navigation(navController = navController)
                 }
             }
         }
