@@ -8,11 +8,9 @@ import retrofit2.http.Query
 interface MoviesApi {
 
 //this will manage generating the query string and using Retrofit to send GET request to api
-    @GET(value = "auto-complete")
-    suspend fun getBooks(
+    @GET(value = "title/find")
+    suspend fun getMovies(
         @Query("q") query: String,
-        @Query("maxResults") maxResults: Int,
-        @Query("startIndex") startIndex: Int,
     ): Response<MovieResponse>
 
 }
