@@ -47,13 +47,14 @@ class MovieViewModel : ViewModel() {
 
 
     fun onSearch() {
+        Constants.showMovie()
         _searchState.value = SearchState(searchOperation = SearchOperation.LOADING)
         viewModelScope.launch {
             _searchState.value = SearchState(
                 data = Pager(
                     config = PagingConfig(pageSize = 10, prefetchDistance = 5),
                     pagingSourceFactory = {
-                        MovieSource(
+                        MovieSource(movieViewModel = this@MovieViewModel,
                             moviesRepository = moviesRepository,
                             paginateData = Paginate(
                                 query = _queryText.value,

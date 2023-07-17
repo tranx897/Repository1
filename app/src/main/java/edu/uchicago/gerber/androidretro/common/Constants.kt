@@ -1,5 +1,6 @@
 package edu.uchicago.gerber.androidretro.common
 
+import android.util.Log
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.ui.Modifier
@@ -407,6 +408,10 @@ object Constants {
     """
         fakeResponse = gson.fromJson<MovieResponse>(hardCodedResponse, MovieResponse::class.java)
         fakeMovie = fakeResponse.results[0]
+
     }
 
+    fun showMovie() {
+        Log.d("Laurence", fakeMovie.toString())
+    }
 }

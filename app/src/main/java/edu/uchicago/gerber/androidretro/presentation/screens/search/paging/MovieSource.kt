@@ -4,11 +4,13 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import edu.uchicago.gerber.androidretro.data.repository.MoviesRepository
 import edu.uchicago.gerber.androidretro.data.models.Result
+import edu.uchicago.gerber.androidretro.presentation.viewmodels.MovieViewModel
 
 
 class MovieSource (
     private val moviesRepository: MoviesRepository,
-    private val paginateData: Paginate
+    private val paginateData: Paginate,
+    private val movieViewModel: MovieViewModel
 ) :
     PagingSource<Int, Result>() {
     override fun getRefreshKey(state: PagingState<Int, Result>): Int? {
@@ -22,11 +24,8 @@ class MovieSource (
         return try {
             val prev = params.key ?: 0
 
-            val response = moviesRepository.getMovies(
-                page = prev,
-                limit = params.loadSize,
-                query = paginateData.query,
-            )
+            val response =
+                moviesRepository.getMovies(movieViewModel.queryText.value, )
 
             if (response.isSuccessful) {
                 val body = response.body()?.results

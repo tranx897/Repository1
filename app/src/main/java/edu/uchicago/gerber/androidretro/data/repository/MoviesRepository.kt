@@ -9,17 +9,9 @@ class MoviesRepository (private val moviesApi: MoviesApi) {
 
     //this must be called on a background thread b/c it is long-running
     //here, I pass in the parameters I need, which then re-pass to the instantated interface
-    suspend fun getMovies(
-        query: String,
-        limit: Int,
-        page: Int,
-    ): Response<MovieResponse> {
+    suspend fun getMovies( name: String, limit: Int, page: Int): Response<MovieResponse> {
         return withContext(Dispatchers.IO) {
-            moviesApi.getMovies(
-                query = query,
-                limit = limit,
-                page = page
-            )
+            moviesApi.getMovies( name, limit, page )
         }
     }
 }
