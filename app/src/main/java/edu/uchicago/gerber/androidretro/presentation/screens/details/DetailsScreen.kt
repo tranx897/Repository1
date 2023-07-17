@@ -49,7 +49,7 @@ import com.skydoves.landscapist.glide.GlideImage
 import edu.uchicago.gerber.androidretro.common.Constants
 import edu.uchicago.gerber.androidretro.presentation.screens.search.paging.MovieRow
 import edu.uchicago.gerber.androidretro.presentation.viewmodels.MovieViewModel
-import edu.uchicago.gerber.favs.R
+import edu.uchicago.gerber.androidretro.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -193,7 +193,7 @@ fun DetailsScreen(
                         )
                     }}
                 with(movie.releaseYear) {
-                    getYear()?.toString()?.let {
+                    year?.toString()?.let {
                         Text(
                             text = it,
                             modifier = Modifier

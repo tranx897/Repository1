@@ -23,11 +23,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import edu.uchicago.gerber.androidretro.common.Constants
 import edu.uchicago.gerber.androidretro.presentation.screens.search.paging.MovieList
+import edu.uchicago.gerber.androidretro.presentation.screens.search.paging.MovieRow
 import edu.uchicago.gerber.androidretro.presentation.screens.search.paging.SearchOperation
 import edu.uchicago.gerber.androidretro.presentation.viewmodels.MovieViewModel
 import edu.uchicago.gerber.androidretro.presentation.widgets.BottomNavigationBar
@@ -109,3 +112,9 @@ fun SearchScreen(
         }
     }
 }
+
+//@Preview(showBackground = true)
+//@Composable
+//fun SearchScreenPreview(movieViewModel: MovieViewModel = MovieViewModel(), navController: NavController = NavController()) {
+//    SearchScreen(movieViewModel = movieViewModel, navController = navController)
+//}

@@ -16,11 +16,11 @@ import edu.uchicago.gerber.androidretro.presentation.viewmodels.MovieViewModel
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun Navigation(
+    movieViewModel: MovieViewModel = viewModel(),
     navController: NavHostController,
-    movieViewModel: MovieViewModel = viewModel()
 ) {
 
-    AnimatedNavHost(navController, startDestination = Screen.Search.route) {
+    NavHost(navController, startDestination = Screen.Search.route) {
         composable(Screen.Search.route) {
             SearchScreen(movieViewModel,navController)
 

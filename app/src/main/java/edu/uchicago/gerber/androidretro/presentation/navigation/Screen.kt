@@ -1,6 +1,6 @@
 package edu.uchicago.gerber.androidretro.presentation.navigation
 
-import edu.uchicago.gerber.favs.R
+import edu.uchicago.gerber.androidretro.R
 
 sealed class Screen(var route: String, var icon: Int, var title: String) {
     object Search : Screen("search", R.drawable.ic_search, "Search")

@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace 'edu.uchicago.gerber.favs'
+    namespace 'edu.uchicago.gerber.androidretro'
     compileSdk 33
 
     defaultConfig {
-        applicationId "edu.uchicago.gerber.favs"
+        applicationId "edu.uchicago.gerber.androidretro"
         minSdk 26
         targetSdk 33
         versionCode 1
