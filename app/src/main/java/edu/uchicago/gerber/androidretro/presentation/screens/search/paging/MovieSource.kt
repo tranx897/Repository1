@@ -1,5 +1,6 @@
 package edu.uchicago.gerber.androidretro.presentation.screens.search.paging
 
+import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import edu.uchicago.gerber.androidretro.data.repository.MoviesRepository
@@ -24,9 +25,12 @@ class MovieSource (
         return try {
             val prev = params.key ?: 0
 
-            val response =
-                moviesRepository.getMovies(movieViewModel.queryText.value, )
-
+            val response = moviesRepository.getMovies(
+                page = prev,
+                limit = params.loadSize,
+                name = movieViewModel.queryText.value
+            )
+            Log.d("Laurence", response.toString())
             if (response.isSuccessful) {
                 val body = response.body()?.results
                 LoadResult.Page(
