@@ -9,7 +9,7 @@ class MoviesRepository (private val moviesApi: MoviesApi) {
 
     //this must be called on a background thread b/c it is long-running
     //here, I pass in the parameters I need, which then re-pass to the instantated interface
-    suspend fun getBooks(
+    suspend fun getMovies(
         query: String,
         limit: Int,
         page: Int,

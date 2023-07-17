@@ -7,7 +7,7 @@ import edu.uchicago.gerber.androidretro.data.models.Result
 
 
 class MovieSource (
-    private val booksRepository: MoviesRepository,
+    private val moviesRepository: MoviesRepository,
     private val paginateData: Paginate
 ) :
     PagingSource<Int, Result>() {
@@ -22,7 +22,7 @@ class MovieSource (
         return try {
             val prev = params.key ?: 0
 
-            val response = booksRepository.getBooks(
+            val response = moviesRepository.getMovies(
                 page = prev,
                 limit = params.loadSize,
                 query = paginateData.query,

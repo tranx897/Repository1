@@ -34,7 +34,7 @@ fun MovieList(movieViewModel: MovieViewModel, navController: NavController) {
             val boolItem = lazyPagingItems[index]!!
             MovieRow(movie = boolItem) {
                 //the following lines define the onItemClick behavior
-                movieViewModel.setBook(boolItem)
+                movieViewModel.setMovie(boolItem)
                 navController.navigate(
                     route = Screen.Detail.route
                 )

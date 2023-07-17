@@ -27,8 +27,8 @@ class MovieViewModel : ViewModel() {
     private var _queryText = mutableStateOf("")
     val queryText: State<String> = _queryText
 
-    private var _book = mutableStateOf(Constants.fakeMovie)
-    val book: State<Result> = _book
+    private var _movie = mutableStateOf(Constants.fakeMovie)
+    val movie: State<Result> = _movie
 
     private val _searchState = mutableStateOf(SearchState())
     val searchState: State<SearchState> = _searchState
@@ -37,8 +37,8 @@ class MovieViewModel : ViewModel() {
     //////////////////////////////////////////
     // FUNCTIONS
     //////////////////////////////////////////
-    fun setBook(book: Result) {
-        _book.value = book
+    fun setMovie(movie: Result) {
+        _movie.value = movie
     }
 
     fun setQueryText(query: String) {
@@ -54,7 +54,7 @@ class MovieViewModel : ViewModel() {
                     config = PagingConfig(pageSize = 10, prefetchDistance = 5),
                     pagingSourceFactory = {
                         MovieSource(
-                            booksRepository = moviesRepository,
+                            moviesRepository = moviesRepository,
                             paginateData = Paginate(
                                 query = _queryText.value,
                             )
