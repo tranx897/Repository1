@@ -95,4 +95,8 @@ dependencies {
     // https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api
     implementation 'javax.annotation:javax.annotation-api:1.2-b01'
 
+
+    //Accompanist compose animation
+    implementation "com.google.accompanist:accompanist-navigation-animation:0.23.1"
+
 }
