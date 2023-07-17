@@ -11,8 +11,8 @@ class MoviesRepository (private val moviesApi: MoviesApi) {
     //here, I pass in the parameters I need, which then re-pass to the instantated interface
     suspend fun getBooks(
         query: String,
-        maxResults: Int,
-        startIndex: Int,
+        limit: Int,
+        page: Int,
     ): Response<MovieResponse> {
         return withContext(Dispatchers.IO) {
             moviesApi.getMovies(

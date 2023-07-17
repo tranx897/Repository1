@@ -12,7 +12,7 @@ interface MoviesApi {
     suspend fun getMovies(
         @Query("q") query: String,
         @Query("limit") limit: Int,
-        @Query("page") page: Int
+        @Query("page") page: Int,
     ): Response<MovieResponse>
 
 }
