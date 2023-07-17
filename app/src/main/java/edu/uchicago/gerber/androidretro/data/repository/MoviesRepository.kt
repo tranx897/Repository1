@@ -16,7 +16,9 @@ class MoviesRepository (private val moviesApi: MoviesApi) {
     ): Response<MovieResponse> {
         return withContext(Dispatchers.IO) {
             moviesApi.getMovies(
-                query = query
+                query = query,
+                limit = limit,
+                page = page
             )
         }
     }

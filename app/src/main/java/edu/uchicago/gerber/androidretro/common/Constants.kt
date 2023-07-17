@@ -9,6 +9,6 @@ object Constants {
 
     val modifier = Modifier.padding(paddingValues = PaddingValues(all = 0.dp))
 
-    val movieUrl = "https://online-movie-database.p.rapidapi.com/"
+    val movieUrl = "https://moviesdatabase.p.rapidapi.com/"
 
 }
