@@ -1,48 +1,57 @@
 
-package edu.uchicago.gerber.androidretro.data.models;
-
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
+package MoviesDatabase;
 
 import java.util.List;
-
 import javax.annotation.Generated;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
 @Generated("jsonschema2pojo")
 public class MovieResponse {
 
-    @SerializedName("d")
+    @SerializedName("page")
     @Expose
-    private List<D> d;
-    @SerializedName("q")
+    private Integer page;
+    @SerializedName("next")
     @Expose
-    private String q;
-    @SerializedName("v")
+    private String next;
+    @SerializedName("entries")
     @Expose
-    private Integer v;
+    private Integer entries;
+    @SerializedName("results")
+    @Expose
+    private List<Result> results;
 
-    public List<D> getD() {
-        return d;
+    public Integer getPage() {
+        return page;
     }
 
-    public void setD(List<D> d) {
-        this.d = d;
+    public void setPage(Integer page) {
+        this.page = page;
     }
 
-    public String getQ() {
-        return q;
+    public String getNext() {
+        return next;
     }
 
-    public void setQ(String q) {
-        this.q = q;
+    public void setNext(String next) {
+        this.next = next;
     }
 
-    public Integer getV() {
-        return v;
+    public Integer getEntries() {
+        return entries;
     }
 
-    public void setV(Integer v) {
-        this.v = v;
+    public void setEntries(Integer entries) {
+        this.entries = entries;
+    }
+
+    public List<Result> getResults() {
+        return results;
+    }
+
+    public void setResults(List<Result> results) {
+        this.results = results;
     }
 
 }
