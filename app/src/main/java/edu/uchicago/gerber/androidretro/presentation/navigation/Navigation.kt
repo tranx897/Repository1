@@ -20,7 +20,7 @@ fun Navigation(
     navController: NavHostController,
 ) {
 
-    NavHost(navController, startDestination = Screen.Search.route) {
+    AnimatedNavHost(navController, startDestination = Screen.Search.route) {
         composable(Screen.Search.route) {
             SearchScreen(movieViewModel,navController)
 
