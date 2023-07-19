@@ -55,7 +55,7 @@ fun SearchScreen(
                 ),
                 title = {
                     Text(
-                        text = "Search Books",
+                        text = "Search Movies",
                         modifier = Modifier
                             .fillMaxWidth(),
                         style = TextStyle(color = Color.Black, fontWeight = FontWeight.Bold),
@@ -77,7 +77,7 @@ fun SearchScreen(
 
             CustomOutlinedTextField(
                 title = "Search term(s)",
-                placeHolder = "e.g. java",
+                placeHolder = "e.g. batman",
                 textState = queryText,
                 onTextChange = movieViewModel::setQueryText,
                 keyboardType = KeyboardType.Text,
