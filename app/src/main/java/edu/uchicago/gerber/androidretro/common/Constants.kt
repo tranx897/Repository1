@@ -411,7 +411,4 @@ object Constants {
 
     }
 
-    fun showMovie() {
-        Log.d("Laurence", fakeMovie.toString())
-    }
 }

@@ -1,6 +1,7 @@
 package edu.uchicago.gerber.androidretro.data.repository
 
 import edu.uchicago.gerber.androidretro.data.models.MovieResponse
+import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -17,9 +18,8 @@ interface MoviesApi {
 //    ): Response<MovieResponse>
 
     @GET(value = "titles/search/keyword/{name}")
-    fun getMovies(@Path("name") name: String,
-                @Query("limit") limit: Int,
-                @Query("page") page: Int,
-                ): Response<MovieResponse>
+    fun getMovies(
+        @Path("name") name: String
+    ): Response<MovieResponse>
 
 }

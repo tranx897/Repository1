@@ -10,8 +10,7 @@ import edu.uchicago.gerber.androidretro.presentation.viewmodels.MovieViewModel
 
 class MovieSource (
     private val moviesRepository: MoviesRepository,
-    private val paginateData: Paginate,
-    private val movieViewModel: MovieViewModel
+    private val paginateData : Paginate
 ) :
     PagingSource<Int, Result>() {
     override fun getRefreshKey(state: PagingState<Int, Result>): Int? {
@@ -23,20 +22,17 @@ class MovieSource (
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Result> {
         return try {
-            val prev = params.key ?: 0
+            val nextPageNumber = params.key ?: 1
 
             val response = moviesRepository.getMovies(
-                page = prev,
-                limit = params.loadSize,
-                name = movieViewModel.queryText.value
+                name = paginateData.name,
             )
-            Log.d("Laurence", response.toString())
             if (response.isSuccessful) {
                 val body = response.body()?.results
                 LoadResult.Page(
                     data = body!!,
-                    prevKey = if (prev == 0) null else prev - 1,
-                    nextKey = if (body.size < params.loadSize) null else prev + 10
+                    prevKey = if (nextPageNumber == 0) null else nextPageNumber - 1,
+                    nextKey = if (body.size < params.loadSize) null else nextPageNumber + 1
                 )
             } else {
                 LoadResult.Error(Exception(response.message()))
@@ -51,3 +47,4 @@ class MovieSource (
         get() = true
 
 }
+
