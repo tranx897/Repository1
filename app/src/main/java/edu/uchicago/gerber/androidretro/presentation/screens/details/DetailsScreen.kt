@@ -175,7 +175,7 @@ fun DetailsScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .size(300.dp),
-                    imageModel = movie.primaryImage?.url?.replace("http", "https") ?: "https://picsum.photos/id/1026/200/300",
+                    imageModel = movie.primaryImage?.url?: "https://picsum.photos/id/1026/200/300",
                     // Crop, Fit, Inside, FillHeight, FillWidth, None
                     contentScale = ContentScale.Fit
 
