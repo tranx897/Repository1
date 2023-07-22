@@ -55,7 +55,7 @@ fun MovieRow(
             Surface(modifier = Modifier.padding(0.dp, 0.dp, 10.dp, 0.dp)) {
                 //we use coil library here to get fadeIn effect
                 val image = rememberCoilPainter(
-                    request = movie.primaryImage?.url?.replace("http", "https")?: "https://picsum.photos/id/1026/60/90",
+                    request = movie.primaryImage?.url?: "https://picsum.photos/id/1026/60/90",
                     fadeIn = true)
                 Image(
                     painter = image,
