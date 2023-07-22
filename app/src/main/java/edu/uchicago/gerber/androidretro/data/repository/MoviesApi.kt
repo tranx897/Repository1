@@ -18,9 +18,9 @@ interface MoviesApi {
 //        @Query("page") page: Int,
 //    ): Response<MovieResponse>
     @Headers("X-RapidAPI-Key: 447b489f46msh37561d21265994fp10e718jsn0f16e5e800db",
-        "X-RapidAPI-Host", "moviesdatabase.p.rapidapi.com")
+        "X-RapidAPI-Host: moviesdatabase.p.rapidapi.com")
     @GET(value = "titles/search/keyword/{name}")
-    fun getMovies(
+    suspend fun getMovies(
         @Path("name") name: String
     ): Response<MovieResponse>
 
