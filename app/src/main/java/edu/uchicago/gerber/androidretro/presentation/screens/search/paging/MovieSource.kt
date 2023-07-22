@@ -25,14 +25,14 @@ class MovieSource (
             val nextPageNumber = params.key ?: 1
 
             val response = moviesRepository.getMovies(
-                name = paginateData.name,
+                name = paginateData.name, page = nextPageNumber
             )
             if (response.isSuccessful) {
                 val body = response.body()?.results
                 LoadResult.Page(
                     data = body!!,
                     prevKey = if (nextPageNumber == 0) null else nextPageNumber - 1,
-                    nextKey = if (body.size < params.loadSize) null else nextPageNumber + 1
+                    nextKey = nextPageNumber + 1
                 )
             } else {
                 LoadResult.Error(Exception(response.message()))

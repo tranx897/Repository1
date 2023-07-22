@@ -21,7 +21,8 @@ interface MoviesApi {
         "X-RapidAPI-Host: moviesdatabase.p.rapidapi.com")
     @GET(value = "titles/search/keyword/{name}")
     suspend fun getMovies(
-        @Path("name") name: String
+        @Path("name") name: String,
+        @Query("page") page: Int
     ): Response<MovieResponse>
 
 }
