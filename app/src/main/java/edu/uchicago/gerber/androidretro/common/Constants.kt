@@ -6,6 +6,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.google.gson.Gson
+import edu.uchicago.gerber.androidretro.data.dto.FavoriteMovieResponse
+import edu.uchicago.gerber.androidretro.data.dto.Movie
 import edu.uchicago.gerber.androidretro.data.models.Result
 import edu.uchicago.gerber.androidretro.data.models.MovieResponse
 
@@ -17,6 +19,9 @@ object Constants {
     val movieUrl = "https://moviesdatabase.p.rapidapi.com/"
     val fakeMovie: Result
     val fakeResponse: MovieResponse
+
+    val favoriteMovieUrl = "https://tranx897-service-1.4eedj6bmak670.us-west-2.cs.amazonlightsail.com"
+
     //use init to parse the raw response-body
     init {
         val gson = Gson()
