@@ -33,6 +33,12 @@ class MovieViewModel : ViewModel() {
     private val _searchState = mutableStateOf(SearchState())
     val searchState: State<SearchState> = _searchState
 
+    private var _emailText = mutableStateOf("")
+    val emailText: State<String> = _emailText
+
+    private var _bodyText = mutableStateOf("")
+    val bodyText: State<String> = _bodyText
+
 
     //////////////////////////////////////////
     // FUNCTIONS
@@ -43,6 +49,14 @@ class MovieViewModel : ViewModel() {
 
     fun setQueryText(query: String) {
         _queryText.value = query
+    }
+
+    fun setEmailText(email: String) {
+        _emailText.value = email
+    }
+
+    fun setBodyText(email: String) {
+        _bodyText.value = email
     }
 
 
@@ -65,4 +79,6 @@ class MovieViewModel : ViewModel() {
             )
         }
     }
+
+
 }

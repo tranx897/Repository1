@@ -28,7 +28,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import edu.uchicago.gerber.androidretro.common.Constants
+import edu.uchicago.gerber.androidretro.presentation.screens.contact.ContactScreen
 import edu.uchicago.gerber.androidretro.presentation.screens.search.paging.MovieList
 import edu.uchicago.gerber.androidretro.presentation.screens.search.paging.MovieRow
 import edu.uchicago.gerber.androidretro.presentation.screens.search.paging.SearchOperation
@@ -113,8 +115,10 @@ fun SearchScreen(
     }
 }
 
-//@Preview(showBackground = true)
-//@Composable
-//fun SearchScreenPreview(movieViewModel: MovieViewModel = MovieViewModel(), navController: NavController = NavController()) {
-//    SearchScreen(movieViewModel = movieViewModel, navController = navController)
-//}
+@Preview(showBackground = true)
+@Composable
+fun SearchScreenPreview() {
+    val navController = rememberNavController()
+    val movieViewModel = MovieViewModel()
+    SearchScreen( movieViewModel = movieViewModel, navController = navController,)
+}

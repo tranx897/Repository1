@@ -8,6 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import edu.uchicago.gerber.androidretro.presentation.screens.contact.ContactScreen
+import edu.uchicago.gerber.androidretro.presentation.screens.contact.EmailSentScreen
 import edu.uchicago.gerber.androidretro.presentation.screens.details.DetailsScreen
 import edu.uchicago.gerber.androidretro.presentation.screens.favorites.FavoritesScreen
 import edu.uchicago.gerber.androidretro.presentation.screens.search.SearchScreen
@@ -30,11 +31,14 @@ fun Navigation(
         }
 
         composable(Screen.Contact.route) {
-            ContactScreen(navController)
+            ContactScreen(movieViewModel, navController)
         }
 
         composable(Screen.Detail.route) {
             DetailsScreen(movieViewModel, navController)
+        }
+        composable(Screen.EmailSent.route) {
+            EmailSentScreen(navController)
         }
     }
 }
