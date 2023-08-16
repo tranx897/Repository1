@@ -8,18 +8,23 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
 import edu.uchicago.gerber.androidretro.common.Constants
+import edu.uchicago.gerber.androidretro.data.dto.Email
 import edu.uchicago.gerber.androidretro.data.repository.ApiProvider
 import edu.uchicago.gerber.androidretro.data.repository.MoviesRepository
 import edu.uchicago.gerber.androidretro.presentation.screens.search.paging.SearchState
 import edu.uchicago.gerber.androidretro.data.models.Result
+import edu.uchicago.gerber.androidretro.data.repository.SamEmailerRepository
 import edu.uchicago.gerber.androidretro.presentation.screens.search.paging.MovieSource
 import edu.uchicago.gerber.androidretro.presentation.screens.search.paging.Paginate
 import edu.uchicago.gerber.androidretro.presentation.screens.search.paging.SearchOperation
 import kotlinx.coroutines.launch
+import org.json.JSONObject
 
 class MovieViewModel : ViewModel() {
 
     private val moviesRepository: MoviesRepository = MoviesRepository(ApiProvider.moviesApi())
+    private val samEmailerRepository: SamEmailerRepository = SamEmailerRepository(ApiProvider.samEmailerApi())
+
 
     //////////////////////////////////////////
     // MUTABLE-STATES AND OBSERVABLE STATES
@@ -86,5 +91,12 @@ class MovieViewModel : ViewModel() {
         }
     }
 
+    fun onSendEmail() {
+        val email: Email = Email.string2Email(_emailText.value, _subjectText.value, _bodyText.value)
+        val emailJson: JSONObject = email.toJsonRaw()
+        viewModelScope.launch {
+            samEmailerRepository.sendEmail(emailJson)
+        }
+    }
 
 }

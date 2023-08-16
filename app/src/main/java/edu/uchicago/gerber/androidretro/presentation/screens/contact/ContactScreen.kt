@@ -112,7 +112,7 @@ fun ContactScreen(
                 title = "Email Subject",
                 placeHolder = "e.g. Question about viewing movies",
                 textState = subjectText,
-                onTextChange = movieViewModel::setEmailText,
+                onTextChange = movieViewModel::setSubjectText,
                 keyboardType = KeyboardType.Text,
                 ImeAction.Done,
             )
@@ -132,6 +132,7 @@ fun ContactScreen(
 
             Button(
                 onClick = {
+                    movieViewModel::onSendEmail
                     navController.navigate(Screen.EmailSent.route)
                     //Toast.makeText(activity, viewModel.playerName.value, Toast.LENGTH_LONG).show()
                 },

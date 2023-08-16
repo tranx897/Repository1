@@ -20,7 +20,9 @@ object Constants {
     val fakeMovie: Result
     val fakeResponse: MovieResponse
 
-    val favoriteMovieUrl = "https://tranx897-service-1.4eedj6bmak670.us-west-2.cs.amazonlightsail.com"
+    val favoriteMovieUrl = "https://tranx897-service-1.4eedj6bmak670.us-west-2.cs.amazonlightsail.com/"
+
+    val samEmailerUrl = "https://ylukoj8gi3.execute-api.us-west-2.amazonaws.com/Prod/"
 
     //use init to parse the raw response-body
     init {

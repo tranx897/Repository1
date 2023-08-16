@@ -49,7 +49,7 @@ fun BodyTextField(
             .height(300.dp)
             .padding(10.dp, 0.dp),
         textStyle = TextStyle(
-            fontSize = 20.sp, color = Color.Black,
+            fontSize = 15.sp, color = Color.Black,
         ),
 
         )

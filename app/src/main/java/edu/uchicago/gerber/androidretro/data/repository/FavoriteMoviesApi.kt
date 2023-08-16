@@ -19,17 +19,17 @@ interface FavoriteMoviesApi {
 //        @Query("page") page: Int,
 //    ): Response<MovieResponse>
 
-    @GET(value = "/movies/paged/{page}")
+    @GET(value = "movies/paged/{page}")
     suspend fun getFavoriteMovies(
         @Path("page") page: Int
     ): Response<FavoriteMovieResponse>
 
-    @GET(value = "/movies/{id}")
+    @GET(value = "movies/{id}")
     suspend fun getFavoriteMovie(
         @Path("id") id: String
     ): Response<Movie>
 
-    @POST(value = "/movies")
+    @POST(value = "movies")
     suspend fun postFavoriteMovie(
         @Body newFavoriteMovie: Movie
     ): Response<Movie>

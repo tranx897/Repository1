@@ -18,6 +18,16 @@ object ApiProvider {
             .create(MoviesApi::class.java)
     }
 
+    fun samEmailerApi(): SamEmailerApi {
+        return Retrofit.Builder()
+            .baseUrl(Constants.samEmailerUrl)
+            //add a client allows us to intercept the network traffic
+            .client(getOkHttpClient())
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(SamEmailerApi::class.java)
+    }
+
 
     private fun getOkHttpClient() = OkHttpClient.Builder().addInterceptor(getLoggingInterceptor()).build()
 
