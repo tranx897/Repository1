@@ -50,6 +50,7 @@ fun ContactScreen(
     navController: NavController)
 {
     val emailText = movieViewModel.emailText.value
+    val subjectText = movieViewModel.subjectText.value
     val bodyText = movieViewModel.bodyText.value
 
     Scaffold(
@@ -92,7 +93,7 @@ fun ContactScreen(
                 text = "Please email us with questions and feedback about the app",
                 textAlign = TextAlign.Center,
                 style = TextStyle(
-                    fontSize = 19.sp, color = Color.DarkGray,
+                    fontSize = 20.sp, color = Color.DarkGray,
                 )
             )
             Spacer(modifier = Modifier.height(20.dp))
@@ -105,11 +106,21 @@ fun ContactScreen(
                 keyboardType = KeyboardType.Text,
                 ImeAction.Done,
             )
+            Spacer(modifier = Modifier.height(10.dp))
 
-            Spacer(modifier = Modifier.height(20.dp))
+            EmailTextField(
+                title = "Email Subject",
+                placeHolder = "e.g. Question about viewing movies",
+                textState = subjectText,
+                onTextChange = movieViewModel::setEmailText,
+                keyboardType = KeyboardType.Text,
+                ImeAction.Done,
+            )
+
+            Spacer(modifier = Modifier.height(10.dp))
 
             BodyTextField(
-                title = "Your Email Body",
+                title = "Email Body",
                 placeHolder = "e.g. I have a question",
                 textState = bodyText,
                 onTextChange = movieViewModel::setBodyText,
@@ -117,7 +128,7 @@ fun ContactScreen(
                 ImeAction.Done,
             )
 
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(30.dp))
 
             Button(
                 onClick = {

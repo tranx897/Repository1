@@ -45,7 +45,6 @@ fun EmailTextField(
         label = { Text(title) },
         modifier = Modifier.padding(10.dp, 0.dp),
         textStyle = TextStyle(
-            fontWeight = FontWeight.Bold,
             fontSize = 20.sp, color = Color.Black,
         ),
 

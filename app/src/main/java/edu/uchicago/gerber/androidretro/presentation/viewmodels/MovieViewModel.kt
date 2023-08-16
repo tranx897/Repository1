@@ -36,6 +36,9 @@ class MovieViewModel : ViewModel() {
     private var _emailText = mutableStateOf("")
     val emailText: State<String> = _emailText
 
+    private var _subjectText = mutableStateOf("")
+    val subjectText: State<String> = _subjectText
+
     private var _bodyText = mutableStateOf("")
     val bodyText: State<String> = _bodyText
 
@@ -55,8 +58,11 @@ class MovieViewModel : ViewModel() {
         _emailText.value = email
     }
 
-    fun setBodyText(email: String) {
-        _bodyText.value = email
+    fun setSubjectText(subject: String) {
+        _subjectText.value = subject
+    }
+    fun setBodyText(body: String) {
+        _bodyText.value = body
     }
 
 

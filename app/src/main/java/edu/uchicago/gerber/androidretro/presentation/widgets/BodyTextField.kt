@@ -46,10 +46,9 @@ fun BodyTextField(
         singleLine = false,
         label = { Text(title) },
         modifier = Modifier
-            .height(400.dp)
+            .height(300.dp)
             .padding(10.dp, 0.dp),
         textStyle = TextStyle(
-            fontWeight = FontWeight.Bold,
             fontSize = 20.sp, color = Color.Black,
         ),
 
