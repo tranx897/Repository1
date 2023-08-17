@@ -413,8 +413,28 @@ object Constants {
     ]
 }
     """
+        val hardCodedFavoriteMovieResponse = """
+[
+    {"id": "5063114bd386d8fadbd6b004",
+    "title": "Here's Looking at You, Warner Bros.",
+    "imageUrl": "https://m.media-amazon.com/images/M/MV5BMTg2MTAxMzEyN15BMl5BanBnXkFtZTcwNzcxMTcxMQ@@._V1_.jpg",
+    "year": "1991"
+    },
+    {"id": "61e5985ad8f3c0931e46d0b7",
+    "title": "BATMAN vs HALLOWEEN MICHAEL MYERS!! Joker, Harley Quinn, Batgirl Epic Horror Parody",
+    "imageUrl": "https://m.media-amazon.com/images/M/MV5BYmIwZThlZGQtYzQxNC00MDFlLWExYmQtNGU1N2RhZjM4YmVhXkEyXkFqcGdeQXVyMzM1MTIxOTM@._V1_.jpg",
+    "year": "2018"
+    },
+    
+]
+"""
+
         fakeResponse = gson.fromJson<MovieResponse>(hardCodedResponse, MovieResponse::class.java)
         fakeMovie = fakeResponse.results[0]
+
+        val moviesList: List<Movie> = gson.fromJson(hardCodedFavoriteMovieResponse, Array<Movie>::class.java).toList()
+        val fakeFavoriteMovieResponse = FavoriteMovieResponse(moviesList)
+        val fakeFavoriteMovie = fakeFavoriteMovieResponse.movies[0]
 
     }
 

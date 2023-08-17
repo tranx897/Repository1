@@ -13,7 +13,7 @@ import retrofit2.http.Path
 
 interface SamEmailerApi {
 
-    @POST(value = "mail/")
+    @POST(value = "mail")
     suspend fun sendEmail(
         @Body newEmail: JSONObject
     ): Response<JSONObject>
