@@ -1,5 +1,6 @@
 package edu.uchicago.gerber.androidretro.data.dto
 
+import com.google.gson.JsonObject
 import org.json.JSONObject
 
 data class Email (
@@ -25,12 +26,13 @@ data class Email (
         }
     }
 
-    fun toJsonRaw(): JSONObject {
-        val map = mutableMapOf<Any?, Any?>()
-        map["email"] = email
-        map["subject"] = subject
-        map["body"] = body
-        return JSONObject(map)
+    fun toJsonRaw(): JsonObject {
+        val jsonBody = JsonObject().apply {
+            addProperty("email", email)
+            addProperty("subject", subject)
+            addProperty("body", body)
+        }
+        return jsonBody
 
     }
 

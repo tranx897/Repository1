@@ -29,10 +29,10 @@ import edu.uchicago.gerber.androidretro.presentation.widgets.BottomNavigationBar
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun EmailSentScreen(navController: NavController) {
+fun EmailSentScreen(movieViewModel: MovieViewModel, navController: NavController) {
     Scaffold(
         modifier = Constants.modifier,
-        bottomBar = { BottomNavigationBar(navController) },
+        bottomBar = { BottomNavigationBar(movieViewModel, navController) },
         topBar = {
             TopAppBar(
                 colors = TopAppBarDefaults.smallTopAppBarColors(
@@ -75,5 +75,6 @@ fun EmailSentScreen(navController: NavController) {
 @Composable
 fun EmailSentScreenPreview() {
     val navController = rememberNavController()
-    EmailSentScreen(navController = navController,)
+    val movieViewModel = MovieViewModel()
+    EmailSentScreen(movieViewModel = movieViewModel, navController = navController,)
 }

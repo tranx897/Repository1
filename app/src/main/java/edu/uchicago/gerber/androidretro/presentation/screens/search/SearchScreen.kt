@@ -49,7 +49,7 @@ fun SearchScreen(
 
     Scaffold(
         modifier = Constants.modifier,
-        bottomBar = { BottomNavigationBar(navController) },
+        bottomBar = { BottomNavigationBar(movieViewModel, navController) },
         topBar = {
             TopAppBar(
                 colors = TopAppBarDefaults.smallTopAppBarColors(

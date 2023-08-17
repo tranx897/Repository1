@@ -12,9 +12,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import edu.uchicago.gerber.androidretro.presentation.navigation.Screen
+import edu.uchicago.gerber.androidretro.presentation.viewmodels.MovieViewModel
 
 @Composable
-fun BottomNavigationBar(navController: NavController) {
+fun BottomNavigationBar(movieViewModel: MovieViewModel, navController: NavController) {
     val tabs = listOf(
         Screen.Search,
         Screen.Favorites,
@@ -38,6 +39,10 @@ fun BottomNavigationBar(navController: NavController) {
                 alwaysShowLabel = true,
                 selected = currentRoute == tab.route,
                 onClick = {
+                    if (tab == Screen.Favorites) {
+                        movieViewModel.onFavoriteSearch()
+                    }
+
                     navController.navigate(tab.route) {
                         // Pop up to the start destination of the graph to
                         // avoid building up a large stack of destinations

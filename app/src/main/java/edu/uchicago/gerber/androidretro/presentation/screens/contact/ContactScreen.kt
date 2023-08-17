@@ -1,5 +1,6 @@
 package edu.uchicago.gerber.androidretro.presentation.screens.contact
 
+import android.app.Activity
 import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -26,6 +27,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
@@ -53,10 +55,12 @@ fun ContactScreen(
     val emailText = movieViewModel.emailText.value
     val subjectText = movieViewModel.subjectText.value
     val bodyText = movieViewModel.bodyText.value
+    val activity = (LocalContext.current as? Activity)
+
 
     Scaffold(
         modifier = Constants.modifier,
-        bottomBar = { BottomNavigationBar(navController) },
+        bottomBar = { BottomNavigationBar(movieViewModel, navController) },
         topBar = {
             TopAppBar(
                 colors = TopAppBarDefaults.smallTopAppBarColors(
@@ -133,7 +137,7 @@ fun ContactScreen(
 
             Button(
                 onClick = {
-                    movieViewModel::onSendEmail
+                    movieViewModel.onSendEmail()
                     navController.navigate(Screen.EmailSent.route)
                     //Toast.makeText(activity, viewModel.playerName.value, Toast.LENGTH_LONG).show()
                 },

@@ -27,7 +27,7 @@ fun Navigation(
 
         }
         composable(Screen.Favorites.route) {
-            FavoritesScreen(navController)
+            FavoritesScreen(movieViewModel, navController)
         }
 
         composable(Screen.Contact.route) {
@@ -38,7 +38,7 @@ fun Navigation(
             DetailsScreen(movieViewModel, navController)
         }
         composable(Screen.EmailSent.route) {
-            EmailSentScreen(navController)
+            EmailSentScreen(movieViewModel, navController)
         }
     }
 }

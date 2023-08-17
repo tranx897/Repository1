@@ -1,7 +1,7 @@
 package edu.uchicago.gerber.androidretro.data.repository
 
-import edu.uchicago.gerber.androidretro.data.dto.FavoriteMovieResponse
 import edu.uchicago.gerber.androidretro.data.dto.Movie
+import org.json.JSONArray
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -22,7 +22,7 @@ interface FavoriteMoviesApi {
     @GET(value = "movies/paged/{page}")
     suspend fun getFavoriteMovies(
         @Path("page") page: Int
-    ): Response<FavoriteMovieResponse>
+    ): Response<List<Movie>>
 
     @GET(value = "movies/{id}")
     suspend fun getFavoriteMovie(

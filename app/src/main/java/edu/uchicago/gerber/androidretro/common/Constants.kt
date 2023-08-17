@@ -1,12 +1,10 @@
 package edu.uchicago.gerber.androidretro.common
 
-import android.util.Log
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.google.gson.Gson
-import edu.uchicago.gerber.androidretro.data.dto.FavoriteMovieResponse
 import edu.uchicago.gerber.androidretro.data.dto.Movie
 import edu.uchicago.gerber.androidretro.data.models.Result
 import edu.uchicago.gerber.androidretro.data.models.MovieResponse
@@ -21,7 +19,6 @@ object Constants {
     val fakeResponse: MovieResponse
 
     val favoriteMovieUrl = "https://tranx897-service-1.4eedj6bmak670.us-west-2.cs.amazonlightsail.com/"
-    val fakeFavoriteMovieResponse: FavoriteMovieResponse
     val fakeFavoriteMovie: Movie
 
     val samEmailerUrl = "https://ylukoj8gi3.execute-api.us-west-2.amazonaws.com/Prod/"
@@ -434,9 +431,8 @@ object Constants {
         fakeResponse = gson.fromJson<MovieResponse>(hardCodedResponse, MovieResponse::class.java)
         fakeMovie = fakeResponse.results[0]
 
-        val movieArray = gson.fromJson(hardCodedFavoriteMovieResponse, Array<Movie>::class.java)
-        fakeFavoriteMovieResponse = FavoriteMovieResponse.movieArray2FMR(movieArray)
-        fakeFavoriteMovie = fakeFavoriteMovieResponse.movies[0]
+        val movieList = gson.fromJson<Array<Movie>>(hardCodedFavoriteMovieResponse, Array<Movie>::class.java)
+        fakeFavoriteMovie = movieList[0]
 
     }
 

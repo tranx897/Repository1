@@ -10,6 +10,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
+import com.google.gson.JsonObject
 import edu.uchicago.gerber.androidretro.common.Constants
 import edu.uchicago.gerber.androidretro.data.dto.Email
 import edu.uchicago.gerber.androidretro.data.dto.Movie
@@ -19,6 +20,9 @@ import edu.uchicago.gerber.androidretro.presentation.screens.search.paging.Searc
 import edu.uchicago.gerber.androidretro.data.models.Result
 import edu.uchicago.gerber.androidretro.data.repository.FavoriteMoviesRepository
 import edu.uchicago.gerber.androidretro.data.repository.SamEmailerRepository
+import edu.uchicago.gerber.androidretro.presentation.screens.favorites.paging.FavoriteSearchOperation
+import edu.uchicago.gerber.androidretro.presentation.screens.favorites.paging.FavoritesMovieSource
+import edu.uchicago.gerber.androidretro.presentation.screens.favorites.paging.FavoritesPaginate
 import edu.uchicago.gerber.androidretro.presentation.screens.favorites.paging.FavoritesSearchState
 import edu.uchicago.gerber.androidretro.presentation.screens.search.paging.MovieSource
 import edu.uchicago.gerber.androidretro.presentation.screens.search.paging.Paginate
@@ -83,6 +87,11 @@ class MovieViewModel : ViewModel() {
         _bodyText.value = body
     }
 
+    fun setFavoriteMovie(favoriteMovie: Movie) {
+        _favoriteMovie.value = favoriteMovie
+    }
+
+
 
     fun onSearch() {
         _searchState.value = SearchState(searchOperation = SearchOperation.LOADING)
@@ -106,14 +115,35 @@ class MovieViewModel : ViewModel() {
 
     fun onSendEmail() {
         val email: Email = Email.string2Email(_emailText.value, _subjectText.value, _bodyText.value)
-        val emailJson: JSONObject = email.toJsonRaw()
+        val emailJson: JsonObject = email.toJsonRaw()
         viewModelScope.launch {
-            samEmailerRepository.sendEmail(emailJson)
+            val response = samEmailerRepository.sendEmail(emailJson)
+            if (response.isSuccessful) {
+                val responseBody = response.body()
+                println("Email sent successfully. Response: $responseBody")
+            } else {
+                val errorMessage = response.errorBody()?.string()
+                println("Error sending email. Response: $errorMessage")
+            }
         }
     }
 
     fun onFavoriteSearch() {
-
+        _favoritesSearchState.value = FavoritesSearchState(favoriteSearchOperation = FavoriteSearchOperation.LOADING)
+        viewModelScope.launch {
+            _favoritesSearchState.value = FavoritesSearchState(
+                data = Pager(
+                    config = PagingConfig(pageSize = 10, prefetchDistance = 5),
+                    pagingSourceFactory = {
+                        FavoritesMovieSource(
+                            favoriteMoviesRepository = favoriteMoviesRepository,
+                            paginateData = FavoritesPaginate()
+                        )
+                    }
+                ).flow.cachedIn(viewModelScope),
+                favoriteSearchOperation = FavoriteSearchOperation.DONE
+            )
+        }
     }
 
 }
