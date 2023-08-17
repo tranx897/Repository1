@@ -1,7 +1,10 @@
 package edu.uchicago.gerber.androidretro.presentation.viewmodels
 
+import android.app.Activity
+import android.widget.Toast
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
@@ -9,11 +12,14 @@ import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
 import edu.uchicago.gerber.androidretro.common.Constants
 import edu.uchicago.gerber.androidretro.data.dto.Email
+import edu.uchicago.gerber.androidretro.data.dto.Movie
 import edu.uchicago.gerber.androidretro.data.repository.ApiProvider
 import edu.uchicago.gerber.androidretro.data.repository.MoviesRepository
 import edu.uchicago.gerber.androidretro.presentation.screens.search.paging.SearchState
 import edu.uchicago.gerber.androidretro.data.models.Result
+import edu.uchicago.gerber.androidretro.data.repository.FavoriteMoviesRepository
 import edu.uchicago.gerber.androidretro.data.repository.SamEmailerRepository
+import edu.uchicago.gerber.androidretro.presentation.screens.favorites.paging.FavoritesSearchState
 import edu.uchicago.gerber.androidretro.presentation.screens.search.paging.MovieSource
 import edu.uchicago.gerber.androidretro.presentation.screens.search.paging.Paginate
 import edu.uchicago.gerber.androidretro.presentation.screens.search.paging.SearchOperation
@@ -24,7 +30,7 @@ class MovieViewModel : ViewModel() {
 
     private val moviesRepository: MoviesRepository = MoviesRepository(ApiProvider.moviesApi())
     private val samEmailerRepository: SamEmailerRepository = SamEmailerRepository(ApiProvider.samEmailerApi())
-
+    private val favoriteMoviesRepository: FavoriteMoviesRepository = FavoriteMoviesRepository(ApiProvider.favoriteMoviesApi())
 
     //////////////////////////////////////////
     // MUTABLE-STATES AND OBSERVABLE STATES
@@ -46,6 +52,13 @@ class MovieViewModel : ViewModel() {
 
     private var _bodyText = mutableStateOf("")
     val bodyText: State<String> = _bodyText
+
+    private var _favoriteMovie = mutableStateOf(Constants.fakeFavoriteMovie)
+    val favoriteMovie: State<Movie> = _favoriteMovie
+
+    private val _favoritesSearchState = mutableStateOf(FavoritesSearchState())
+    val favoritesSearchState: State<FavoritesSearchState> = _favoritesSearchState
+
 
 
     //////////////////////////////////////////
@@ -97,6 +110,10 @@ class MovieViewModel : ViewModel() {
         viewModelScope.launch {
             samEmailerRepository.sendEmail(emailJson)
         }
+    }
+
+    fun onFavoriteSearch() {
+
     }
 
 }

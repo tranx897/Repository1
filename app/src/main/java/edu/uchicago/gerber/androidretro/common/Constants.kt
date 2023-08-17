@@ -21,6 +21,8 @@ object Constants {
     val fakeResponse: MovieResponse
 
     val favoriteMovieUrl = "https://tranx897-service-1.4eedj6bmak670.us-west-2.cs.amazonlightsail.com/"
+    val fakeFavoriteMovieResponse: FavoriteMovieResponse
+    val fakeFavoriteMovie: Movie
 
     val samEmailerUrl = "https://ylukoj8gi3.execute-api.us-west-2.amazonaws.com/Prod/"
 
@@ -432,9 +434,9 @@ object Constants {
         fakeResponse = gson.fromJson<MovieResponse>(hardCodedResponse, MovieResponse::class.java)
         fakeMovie = fakeResponse.results[0]
 
-        val moviesList: List<Movie> = gson.fromJson(hardCodedFavoriteMovieResponse, Array<Movie>::class.java).toList()
-        val fakeFavoriteMovieResponse = FavoriteMovieResponse(moviesList)
-        val fakeFavoriteMovie = fakeFavoriteMovieResponse.movies[0]
+        val movieArray = gson.fromJson(hardCodedFavoriteMovieResponse, Array<Movie>::class.java)
+        fakeFavoriteMovieResponse = FavoriteMovieResponse.movieArray2FMR(movieArray)
+        fakeFavoriteMovie = fakeFavoriteMovieResponse.movies[0]
 
     }
 

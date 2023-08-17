@@ -1,5 +1,6 @@
 package edu.uchicago.gerber.androidretro.presentation.screens.contact
 
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -84,7 +85,7 @@ fun ContactScreen(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(10.dp))
 
             Text(
                 modifier = Modifier
@@ -110,7 +111,7 @@ fun ContactScreen(
 
             EmailTextField(
                 title = "Email Subject",
-                placeHolder = "e.g. Question about viewing movies",
+                placeHolder = "e.g. Question about movies",
                 textState = subjectText,
                 onTextChange = movieViewModel::setSubjectText,
                 keyboardType = KeyboardType.Text,
@@ -128,7 +129,7 @@ fun ContactScreen(
                 ImeAction.Done,
             )
 
-            Spacer(modifier = Modifier.height(30.dp))
+            Spacer(modifier = Modifier.height(20.dp))
 
             Button(
                 onClick = {

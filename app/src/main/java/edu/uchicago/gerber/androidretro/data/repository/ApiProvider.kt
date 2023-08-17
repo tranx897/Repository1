@@ -28,6 +28,16 @@ object ApiProvider {
             .create(SamEmailerApi::class.java)
     }
 
+    fun favoriteMoviesApi(): FavoriteMoviesApi {
+        return Retrofit.Builder()
+            .baseUrl(Constants.favoriteMovieUrl)
+            //add a client allows us to intercept the network traffic
+            .client(getOkHttpClient())
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(FavoriteMoviesApi::class.java)
+    }
+
 
     private fun getOkHttpClient() = OkHttpClient.Builder().addInterceptor(getLoggingInterceptor()).build()
 
